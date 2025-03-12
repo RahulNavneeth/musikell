@@ -52,25 +52,8 @@ note :: Float -> Float -> [Pulse]
 note semitone beat = frequency (f semitone) (beat * beatDuration)
 
 wave :: [Pulse]
--- wave = concat [frequency pitchStandard 1, frequency 493.880416304 0.5, frequency 523.2465458574 1.0, frequency 587.3209588584 0.5, frequency 659.2416356024 1, frequency 698.4401432553 0.5, frequency 783.9679743508 1]
--- wave = concat [note i 1 | i <- [5, 5, 3, 5, 8, 6, 5, 3, 5, 5, 3, 5, 8, 10, 12, 10, 8, 10, 5, 3, 5, 8, 6, 5, 3, 5, 5, 3, 5, 8, 10, 12, 10, 8, 10, 5, 3, 5, 8, 6, 5, 3, 5, 5, 3]]
-wave =
-    concat
-        [ note 6 0.25
-        , note 8 0.25
-        , note 11 0.25
-        , note 8 0.25
-        , note 15 0.75
-        , note 15 0.75
-        , note 13 1.5
-        , note 6 0.25
-        , note 8 0.25
-        , note 11 0.25
-        , note 8 0.25
-        , note 13 0.75
-        , note 13 0.75
-        , note 11 0.75
-        ]
+-- wave = concat [ add tunes here ]
+wave = concat [note i 1 | i <- [5, 5, 3, 5, 8, 6, 5, 3, 5, 5, 3, 5, 8, 10, 12, 10, 8, 10, 5, 3, 5, 8, 6, 5, 3, 5, 5, 3, 5, 8, 10, 12, 10, 8, 10, 5, 3, 5, 8, 6, 5, 3, 5, 5, 3]]
 
 valueToByteString :: [Float] -> B.ByteString
 valueToByteString value = toStrict $ BB.toLazyByteString $ foldMap BB.floatLE value
