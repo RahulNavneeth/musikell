@@ -44,15 +44,11 @@ instance Storable Sample where
 
 foreign import ccall "init_audio_driver" c_init_audio_driver :: CString -> IO (CInt)
 foreign import ccall unsafe "write_audio" c_write_audio :: Ptr Sample -> IO ()
-foreign import ccall unsafe "testI" c_testI :: IO (CInt)
 
 initDriver :: String -> IO (Int)
 initDriver driverName =
   withCString driverName $ \cstr ->
     fmap fromIntegral (c_init_audio_driver cstr)
-
-testI :: IO (Int)
-testI = fmap fromIntegral c_testI
 
 createSample :: IO Sample
 createSample = do

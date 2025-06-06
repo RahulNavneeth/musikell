@@ -19,10 +19,10 @@ library
 		Cbits.Interface.Driver
 	hs-source-dirs: src
 	include-dirs:
-		src/Cbits/Echoes/include
+		src/Cbits/echoes-driver/include
 	c-sources:
-		src/Cbits/Echoes/src/IO.c,
-		src/Cbits/Echoes/src/driver-mac.c,
+		src/Cbits/echoes-driver/src/IO.c,
+		src/Cbits/echoes-driver/src/driver-mac.c,
 	build-depends: base >=4.17.2.1 && <4.21
 	default-extensions: InstanceSigs
 	default-language: Haskell2010
