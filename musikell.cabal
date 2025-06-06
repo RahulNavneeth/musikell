@@ -1,0 +1,38 @@
+cabal-version:      3.0
+name:               musikell
+version:            0.1.0.0
+license:            BSD-3-Clause
+license-file:       LICENSE
+author:             RahulNavneeth
+maintainer:         rahulmnavneeth@gmail.com
+category:           Music
+build-type:         Simple
+extra-doc-files:    CHANGELOG.md
+
+common warnings
+    ghc-options: -Wall
+	--fPIC -optc-fno-typed-cxx-new-delete
+
+library
+	import: warnings
+	exposed-modules:
+		Cbits.Interface.Driver
+	hs-source-dirs: src
+	include-dirs:
+		src/Cbits/Echoes/include
+	c-sources:
+		src/Cbits/Echoes/src/IO.c,
+		src/Cbits/Echoes/src/driver-mac.c,
+	build-depends: base >=4.17.2.1 && <4.21
+	default-extensions: InstanceSigs
+	default-language: Haskell2010
+
+executable musikell
+    import:           warnings
+    main-is:          Main.hs
+    build-depends: 	  base >=4.17.2.1 && <4.21,
+					  process,
+					  bytestring,
+					  musikell,
+    hs-source-dirs:   app
+    default-language: Haskell2010
